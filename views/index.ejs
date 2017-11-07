@@ -42,6 +42,23 @@ const ENROLL_KEY = {
   4: "1001-1300",
   5: "1301+"
 }
+const LEVEL_TO_PAY_KEY = {
+  "B1":	61751,
+  "B2":	64839,
+  "B3":	67926,
+  "B4":	71014,
+  "B5":	74101,
+  "G1":	67926,
+  "G2":	71322,
+  "G3":	74719,
+  "G4":	78115,
+  "G5":	81511,
+  "E1":	74101,
+  "E2":	77806,
+  "E3":	81511,
+  "E4":	85216,
+  "E5":	88921
+}
 
 //example
 state_mo = 5113;
@@ -53,8 +70,30 @@ principal_performance[1415] = 3;
 principal_performance[1516] = 2;
 principal_performance[1617] = 2;
 
-console.log("In 2014-2015, this principal's performance was: " + PERFORMANCE_NAME[principal_performance[1415]])
-console.log(getLongevity(years_exp, state_mo))
+
+function getEstimatedAnnualCompensation(local_mo, state_mo, other_mo, years_exp){
+  var adm_score = getADMScore(local_mo, state_mo, other_mo);
+  var adm_code = getADMCode(adm_score);
+  var adm = getADM(adm_score, adm_code);
+
+  //estimations are different or calculated from inputs
+  var est_state_annual = LEVEL_TO_PAY_KEY[adm];
+  var est_longevity = getLongevity(years_exp, state_mo);
+
+  //estimations are the same as inputs
+  var local_annual = Math.round(local_mo*12);
+  var other_annual = Math.round(other_mo*12);
+  var state_annual = Math.round(state_mo*12);
+
+  //state hold harmless calc
+  var state_hold_harmless = 0;
+  if (est_state_annual < (state_annual + est_longevity)){
+    state_hold_harmless = state_annual + est_longevity - est_state_annual;
+  }
+
+  //return the total annual compensation
+  return est_state_annual+local_annual+other_annual+state_hold_harmless;
+}
 
 function getTotalSalary(local_mo, state_mo, other_mo){
   return local_mo + state_mo + other_mo;
@@ -73,22 +112,20 @@ function getLongevity(years_exp, state_mo){
     est_longevity = .045;
   }
 
-  return est_longevity*12*state_mo;
+  return Math.round(est_longevity*12*state_mo);
 }
 
 
 
 function getADMScore(local_mo, state_mo, other_mo){
 
-  var adm_score =  PERFORMANCE_SCORE[principal_performance[1415]] +
+  return adm_score =  PERFORMANCE_SCORE[principal_performance[1415]] +
                    PERFORMANCE_SCORE[principal_performance[1516]] +
                    PERFORMANCE_SCORE[principal_performance[1617]];
 }
 
-console.log(getADMCode(local_mo, state_mo, other_mo));
+function getADMCode(adm_score){
 
-function getADMCode(local_mo, state_mo, other_mo){
-  var adm_score = getADMScore(local_mo, state_mo, other_mo);
   var exceededCounter = 0, metCounter = 0, notMetCounter = 0, ineligibleCounter = 0, didntLeadCounter = 0;
 
     for (i in principal_performance){
@@ -135,11 +172,9 @@ function getADMCode(local_mo, state_mo, other_mo){
 
 }
 
-
-
-
-
-
+function getADM(adm_score, adm_code){
+  return "" + adm_code + adm_score;
+}
 
 
 </script>

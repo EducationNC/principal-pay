@@ -10,8 +10,93 @@
 <div style="height:800px;width:200px;background-color:green;"> Wow check out this sweet graphic.</div>
 
 <script>
+//pym stuff
 var pymChild = new pym.Child();
+
+var local_mo, state_mo, other_mo;
+var years_exp, enroll_num;
+var principal_performance = {
+  1415: 0,
+  1516: 0,
+  1718: 0
+}
+
+const PERFORMANCE_NAME = {
+  1: "Exceeded",
+  2: "Met",
+  3: "Not Met",
+  4: "Ineligible",
+  5: "Didn't Lead"
+}
+const PERFORMANCE_SCORE = {
+  1: 10,
+  2: 1,
+  3: 0,
+  4: 7,
+  5: 0
+}
+const ENROLL_KEY = {
+  1: "0-400",
+  2: "401-700",
+  3: "701-1000",
+  4: "1001-1300",
+  5: "1301+"
+}
+
+//example
+state_mo = 5113;
+local_mo = 700;
+other_mo = 661;
+years_exp = 20;
+enroll_num = 2;
+principal_performance[1415] = 3;
+principal_performance[1516] = 2;
+principal_performance[1617] = 2;
+
+console.log("In 2014-2015, this principal's performance was: " + PERFORMANCE_NAME[principal_performance[1415]])
+console.log(getLongevity(years_exp, state_mo))
+
+function getTotalSalary(local_mo, state_mo, other_mo){
+  return local_mo + state_mo + other_mo;
+}
+
+function getLongevity(years_exp, state_mo){
+  var est_longevity;
+
+  if (years_exp >= 10 && years_exp < 15){
+    est_longevity = .015;
+  } else if (years_exp >= 15 && years_exp < 20){
+    est_longevity = .0225;
+  } else if (years_exp >= 20 && years_exp < 25){
+    est_longevity = .0325;
+  } else if (years_exp >= 25){
+    est_longevity = .045;
+  }
+
+  return est_longevity*12*state_mo;
+}
+
+
+
+function getADMScore(local_mo, state_mo, other_mo){
+
+  var adm_score =  PERFORMANCE_SCORE[principal_performance[1415]] +
+                   PERFORMANCE_SCORE[principal_performance[1516]] +
+                   PERFORMANCE_SCORE[principal_performance[1617]];
+}
+
+
+
+
+
+
+
+
+
+
 </script>
+
+
 
 
 

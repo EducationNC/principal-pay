@@ -1,180 +1,274 @@
 <!DOCTYPE html>
 <head>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script type="text/javascript" src="/scripts/pym.js/dist/pym.v1.min.js"></script>
+
+  <style>
+  form {
+    width: 100%;
+    max-width: 700px;
+    margin: 60px auto;
+    }
+  form input {
+      font-size: 30px;
+      padding: 0 20px;
+      border: 2px solid #ccc;
+      width: 100%;
+      color: #666;
+      line-height: 3;
+      border-radius: 7px;
+      font-family: 'PT Sans', sans-serif;
+      font-weight: bold;
+  }
+  form input:focus {
+      outline: 0;
+  }
+  form input.error {
+      border-color: #ff0000;
+  }
+  form label.error {
+      background-color: #ff0000;
+      color: #fff;
+      padding: 6px;
+      font-size: 11px;
+  }
+
+  label {
+      color: #999;
+      display: block;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      font-size: 18px;
+      font-weight: bold;
+      letter-spacing: 0.05em
+  }
+
+  form small {
+      color: #888;
+      font-size: 1em;
+      margin-top: 10px;
+      display: block;
+      align-self: ;
+  }
+  </style>
 </head>
 
 <body>
 
 <h1>Here it is!</h1>
 
+<form id="form">
+  <input></input>
+</form>
 <div style="height:800px;width:200px;background-color:green;"> Wow check out this sweet graphic.</div>
 
+
 <script>
-//pym stuff
-var pymChild = new pym.Child();
-
-var local_mo, state_mo, other_mo;
-var years_exp, enroll_num;
-var principal_performance = {
-  1415: 0,
-  1516: 0,
-  1718: 0
-}
-
-const PERFORMANCE_NAME = {
-  1: "Exceeded",
-  2: "Met",
-  3: "Not Met",
-  4: "Ineligible",
-  5: "Didn't Lead"
-}
-const PERFORMANCE_SCORE = {
-  1: 10,
-  2: 1,
-  3: 0,
-  4: 7,
-  5: 0
-}
-const ENROLL_KEY = {
-  1: "0-400",
-  2: "401-700",
-  3: "701-1000",
-  4: "1001-1300",
-  5: "1301+"
-}
-const LEVEL_TO_PAY_KEY = {
-  "B1":	61751,
-  "B2":	64839,
-  "B3":	67926,
-  "B4":	71014,
-  "B5":	74101,
-  "G1":	67926,
-  "G2":	71322,
-  "G3":	74719,
-  "G4":	78115,
-  "G5":	81511,
-  "E1":	74101,
-  "E2":	77806,
-  "E3":	81511,
-  "E4":	85216,
-  "E5":	88921
-}
-
-//example
-state_mo = 5113;
-local_mo = 700;
-other_mo = 661;
-years_exp = 20;
-enroll_num = 2;
-principal_performance[1415] = 3;
-principal_performance[1516] = 2;
-principal_performance[1617] = 2;
+$(document).ready(function(){
+  //pym stuff
+  var pymChild = new pym.Child();
 
 
-function getEstimatedAnnualCompensation(local_mo, state_mo, other_mo, years_exp){
-  var adm_score = getADMScore(local_mo, state_mo, other_mo);
-  var adm_code = getADMCode(adm_score);
-  var adm = getADM(adm_score, adm_code);
+/**** FORM VALIDATION ****/
 
-  //estimations are different or calculated from inputs
-  var est_state_annual = LEVEL_TO_PAY_KEY[adm];
-  var est_longevity = getLongevity(years_exp, state_mo);
+// https://webdesign.tutsplus.com/tutorials/auto-formatting-input-value--cms-26745
+const FORM = $('#form');
+const INPUT = $(FORM).find("input");
 
-  //estimations are the same as inputs
-  var local_annual = Math.round(local_mo*12);
-  var other_annual = Math.round(other_mo*12);
-  var state_annual = Math.round(state_mo*12);
+$(INPUT).on("keyup", function(e){
 
-  //state hold harmless calc
-  var state_hold_harmless = 0;
-  if (est_state_annual < (state_annual + est_longevity)){
-    state_hold_harmless = state_annual + est_longevity - est_state_annual;
+    var selection = window.getSelection().toString();
+    if ( selection !== '' ) {
+        return;
+    }
+
+    if ( $.inArray( event.keyCode, [38,40,37,39] ) !== -1 ) {
+        return;
+    }
+
+    var $this = $(this);
+    var input = $this.val();
+
+    var input = input.replace(/[\D\s\._\-]+/g, "");
+    input = input ? parseInt(input, 10) : 0;
+
+    $this.val(function(){
+      return (input === 0) ? "" : input.toLocaleString("en-US");
+
+  });
+
+
+})
+
+
+
+/***** SALARY CALCULATIONS *****/
+  var local_mo, state_mo, other_mo;
+  var years_exp, enroll_num;
+  var principal_performance = {
+    1415: 0,
+    1516: 0,
+    1718: 0
   }
 
-  //return the total annual compensation
-  return est_state_annual+local_annual+other_annual+state_hold_harmless;
-}
-
-function getTotalSalary(local_mo, state_mo, other_mo){
-  return local_mo + state_mo + other_mo;
-}
-
-function getLongevity(years_exp, state_mo){
-  var est_longevity;
-
-  if (years_exp >= 10 && years_exp < 15){
-    est_longevity = .015;
-  } else if (years_exp >= 15 && years_exp < 20){
-    est_longevity = .0225;
-  } else if (years_exp >= 20 && years_exp < 25){
-    est_longevity = .0325;
-  } else if (years_exp >= 25){
-    est_longevity = .045;
+  const PERFORMANCE_NAME = {
+    1: "Exceeded",
+    2: "Met",
+    3: "Not Met",
+    4: "Ineligible",
+    5: "Didn't Lead"
+  }
+  const PERFORMANCE_SCORE = {
+    1: 10,
+    2: 1,
+    3: 0,
+    4: 7,
+    5: 0
+  }
+  const ENROLL_KEY = {
+    1: "0-400",
+    2: "401-700",
+    3: "701-1000",
+    4: "1001-1300",
+    5: "1301+"
+  }
+  const LEVEL_TO_PAY_KEY = {
+    "B1":	61751,
+    "B2":	64839,
+    "B3":	67926,
+    "B4":	71014,
+    "B5":	74101,
+    "G1":	67926,
+    "G2":	71322,
+    "G3":	74719,
+    "G4":	78115,
+    "G5":	81511,
+    "E1":	74101,
+    "E2":	77806,
+    "E3":	81511,
+    "E4":	85216,
+    "E5":	88921
   }
 
-  return Math.round(est_longevity*12*state_mo);
-}
+  //example
+  state_mo = 5113;
+  local_mo = 700;
+  other_mo = 661;
+  years_exp = 20;
+  enroll_num = 2;
+  principal_performance[1415] = 3;
+  principal_performance[1516] = 2;
+  principal_performance[1617] = 2;
+
+  console.log("The estimated annual compensation for this teacher is: " + getEstimatedAnnualCompensation(local_mo, state_mo, other_mo, years_exp));
+
+
+  function getEstimatedAnnualCompensation(local_mo, state_mo, other_mo, years_exp){
+    var adm_score = getADMScore(local_mo, state_mo, other_mo);
+    var adm_code = getADMCode(adm_score);
+    var adm = getADM(adm_score, adm_code);
+
+    //estimations are different or calculated from inputs
+    var est_state_annual = LEVEL_TO_PAY_KEY[adm];
+    var est_longevity = getLongevity(years_exp, state_mo);
+
+    //estimations are the same as inputs
+    var local_annual = Math.round(local_mo*12);
+    var other_annual = Math.round(other_mo*12);
+    var state_annual = Math.round(state_mo*12);
+
+    //state hold harmless calc
+    var state_hold_harmless = 0;
+    if (est_state_annual < (state_annual + est_longevity)){
+      state_hold_harmless = state_annual + est_longevity - est_state_annual;
+    }
+
+    //return the total annual compensation
+    return est_state_annual+local_annual+other_annual+state_hold_harmless;
+  }
+
+  function getTotalSalary(local_mo, state_mo, other_mo){
+    return local_mo + state_mo + other_mo;
+  }
+
+  function getLongevity(years_exp, state_mo){
+    var est_longevity;
+
+    if (years_exp >= 10 && years_exp < 15){
+      est_longevity = .015;
+    } else if (years_exp >= 15 && years_exp < 20){
+      est_longevity = .0225;
+    } else if (years_exp >= 20 && years_exp < 25){
+      est_longevity = .0325;
+    } else if (years_exp >= 25){
+      est_longevity = .045;
+    }
+
+    return Math.round(est_longevity*12*state_mo);
+  }
 
 
 
-function getADMScore(local_mo, state_mo, other_mo){
+  function getADMScore(local_mo, state_mo, other_mo){
 
-  return adm_score =  PERFORMANCE_SCORE[principal_performance[1415]] +
-                   PERFORMANCE_SCORE[principal_performance[1516]] +
-                   PERFORMANCE_SCORE[principal_performance[1617]];
-}
+    return adm_score =  PERFORMANCE_SCORE[principal_performance[1415]] +
+                     PERFORMANCE_SCORE[principal_performance[1516]] +
+                     PERFORMANCE_SCORE[principal_performance[1617]];
+  }
 
-function getADMCode(adm_score){
+  function getADMCode(adm_score){
 
-  var exceededCounter = 0, metCounter = 0, notMetCounter = 0, ineligibleCounter = 0, didntLeadCounter = 0;
+    var exceededCounter = 0, metCounter = 0, notMetCounter = 0, ineligibleCounter = 0, didntLeadCounter = 0;
 
-    for (i in principal_performance){
-      switch(principal_performance[i]){
-        case 1:
-          exceededCounter++;
-          break;
-        case 2:
-          metCounter++;
-          break;
-        case 3:
-          notMetCounter++;
-          break;
-        case 4:
-          ineligibleCounter++;
-          break;
-        case 5:
-          didntLeadCounter++;
-          break;
+      for (i in principal_performance){
+        switch(principal_performance[i]){
+          case 1:
+            exceededCounter++;
+            break;
+          case 2:
+            metCounter++;
+            break;
+          case 3:
+            notMetCounter++;
+            break;
+          case 4:
+            ineligibleCounter++;
+            break;
+          case 5:
+            didntLeadCounter++;
+            break;
+        }
       }
-    }
 
-    //Principal has not supervised a school for 2 of the last 3 years
-    //Not Met at least 2 of the last 3
-    if (didntLeadCounter == 2 || notMetCounter == 2){
-      return "B";
-    }
-    //Met + Met + NotMet/Exceeded
-    if (metCounter == 2 && (notMetCounter == 1 || exceededCounter == 1)){
-      return "G";
-    }
-    //Principal for 2 of the last 3 years of a school not eligible to receive a school growth score
-    if (ineligibleCounter == 2){
-      return "G";
-    }
-    //Exceeded + Met + Not Met
-    if (exceededCounter == 1 && metCounter == 1 && notMetCounter == 1){
-      return "G";
-    }
-    //Exceeded + Exceeded + Not Met/Met/Exceeded
-    if (exceededCounter == 2 && (notMetCounter == 1 || metCounter == 1 || exceededCounter == 1)){
-      return "E";
-    }
+      //Principal has not supervised a school for 2 of the last 3 years
+      //Not Met at least 2 of the last 3
+      if (didntLeadCounter == 2 || notMetCounter == 2){
+        return "B";
+      }
+      //Met + Met + NotMet/Exceeded
+      if (metCounter == 2 && (notMetCounter == 1 || exceededCounter == 1)){
+        return "G";
+      }
+      //Principal for 2 of the last 3 years of a school not eligible to receive a school growth score
+      if (ineligibleCounter == 2){
+        return "G";
+      }
+      //Exceeded + Met + Not Met
+      if (exceededCounter == 1 && metCounter == 1 && notMetCounter == 1){
+        return "G";
+      }
+      //Exceeded + Exceeded + Not Met/Met/Exceeded
+      if (exceededCounter == 2 && (notMetCounter == 1 || metCounter == 1 || exceededCounter == 1)){
+        return "E";
+      }
 
-}
+  }
 
-function getADM(adm_score, adm_code){
-  return "" + adm_code + adm_score;
-}
+  function getADM(adm_score, adm_code){
+    return "" + adm_code + adm_score;
+  }
+
+});
 
 
 </script>

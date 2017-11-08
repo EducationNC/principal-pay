@@ -8,29 +8,30 @@ $(document).ready(function(){
   $('#calculate').click(function(e){
     var years_exp = 0;
 
-    var inp_str = ["state_mo", "local_mo", "other_mo"]
+    var income_inp_str = ["state_mo", "local_mo", "other_mo"]
     var incomes = {
       "state_mo": 0,
       "local_mo": 0,
       "other_mo": 0
     }
-
+    var perf_inp_str = ["1415", "1516", "1617"]
     var principal_performance = {
       1415: 0,
       1516: 0,
-      1718: 0
+      1617: 0
     }
+    var adm = 0;
 
     /*** INCOME ***/
-    for (i in inp_str){
+    for (i in income_inp_str){
       //check if no input
-      if ($('#' + inp_str[i]).val() === $('[for=' + inp_str[i] + ']').html()){
+      if ($('#' + income_inp_str[i]).val() === $('[for=' + income_inp_str[i] + ']').html()){
         //income validation - *required
-        if (inp_str[i] == "state_mo"){
+        if (income_inp_str[i] == "state_mo"){
           alert("Please enter your state income");
         }
       } else { //if valid input, set it
-        incomes[inp_str[i]] = $('#' + inp_str[i]).val();
+        incomes[income_inp_str[i]] = $('#' + income_inp_str[i]).val();
       }
     }
 
@@ -42,8 +43,27 @@ $(document).ready(function(){
       years_exp = $('#years_exp').val();
     }
 
-    // console.log(getEstimatedAnnualCompensation(parseInt(incomes["local_mo"]),
-    // parseInt(incomes["state_mo"]), parseInt(incomes["other_mo"]), parseInt(years_exp)));
+    /*** ADM ***/
+    if ($('#adm').val() == 0){
+      alert("Please enter your ADM.");
+    } else { //if valid input, set it
+      adm = $('#adm').val();
+    }
+
+    /*** PERFORMANCE ***/
+    for (i in perf_inp_str){
+      //check if no input
+      if ($('#' + perf_inp_str[i]).val() == 0){
+        //income validation - *required
+        alert("Please enter all performance inputs."); //runs 3x
+      } else { //if valid input, set it
+        principal_performance[parseInt(perf_inp_str[i])] = parseInt($('#' + perf_inp_str[i]).val());
+      }
+    }
+
+
+    console.log(getEstimatedAnnualCompensation(parseInt(incomes["local_mo"]),
+    parseInt(incomes["state_mo"]), parseInt(incomes["other_mo"]), parseInt(years_exp), principal_performance, adm));
 
 
   })
@@ -118,24 +138,24 @@ $(INPUT).on("keyup", function(e){
   }
 
   //EXAMPLE
-  var principal_performance = {
-    1415: 0,
-    1516: 0,
-    1718: 0
-  }
-  var state_mo = 5113;
-  var local_mo = 700;
-  var other_mo = 661;
-  var years_exp = 20;
-  var adm = 2;
-  principal_performance[1415] = 3;
-  principal_performance[1516] = 2;
-  principal_performance[1617] = 2;
+  // var principal_performance = {
+  //   1415: 0,
+  //   1516: 0,
+  //   1718: 0
+  // }
+  // var state_mo = 5113;
+  // var local_mo = 700;
+  // var other_mo = 661;
+  // var years_exp = 20;
+  // var adm = 2;
+  // principal_performance[1415] = 3;
+  // principal_performance[1516] = 2;
+  // principal_performance[1617] = 2;
 
-  console.log(getEstimatedAnnualCompensation(local_mo, state_mo, other_mo, years_exp, principal_performance, adm));
+  // console.log(getEstimatedAnnualCompensation(local_mo, state_mo, other_mo, years_exp, principal_performance, adm));
 
-  function getEstimatedAnnualCompensation(local_mo, state_mo, other_mo, years_exp, principal_performance, adm){
-    var adm_num = getADMNum(adm);
+  function getEstimatedAnnualCompensation(local_mo, state_mo, other_mo, years_exp, principal_performance, adm_num){
+    // var adm_num = getADMNum(adm);
     var performance_letter = getPerformanceLetter(principal_performance);
     var teacher_score = getTeacherScore(adm_num, performance_letter);
 
@@ -153,6 +173,8 @@ $(INPUT).on("keyup", function(e){
     if (est_state_annual < (state_annual + est_longevity)){
       state_hold_harmless = state_annual + est_longevity - est_state_annual;
     }
+
+    //debugger
 
     //return the total annual compensation
     return est_state_annual+local_annual+other_annual+state_hold_harmless;
@@ -180,21 +202,21 @@ $(INPUT).on("keyup", function(e){
 
 
 
-  function getADMNum(adm){
-
-    if (adm >= 0 && adm <= 400){
-      return 1;
-    } else if (adm >= 401 && adm <= 700){
-      return 2;
-    } else if (adm >= 701 && adm <= 1000){
-      return 3;
-    } else if (adm >= 1001 && adm <= 1300){
-      return 4;
-    } else {
-      return 5;
-    }
-
-  }
+  // function getADMNum(adm){
+  //
+  //   if (adm >= 0 && adm <= 400){
+  //     return 1;
+  //   } else if (adm >= 401 && adm <= 700){
+  //     return 2;
+  //   } else if (adm >= 701 && adm <= 1000){
+  //     return 3;
+  //   } else if (adm >= 1001 && adm <= 1300){
+  //     return 4;
+  //   } else {
+  //     return 5;
+  //   }
+  //
+  // }
 
   function getPerformanceLetter(principal_performance){
 

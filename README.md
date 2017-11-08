@@ -21,7 +21,8 @@ This graphic lives on Heroku but someday will live on AWS. You can view the grap
 * [Node.js](https://nodejs.org/en/)
 * [Heroku](https://dashboard.heroku.com/)
 * [Bootstrap 4](https://v4-alpha.getbootstrap.com/getting-started/download/)
-* [FloatLabel.js](https://github.com/m10l/FloatLabel.js) - Used for label movement on forms
+* [Pym.js](http://blog.apps.npr.org/pym.js/) - for responsive embedding
+* [FloatLabel.js](https://github.com/m10l/FloatLabel.js)- for label movement on forms
 
 ## Authors
 

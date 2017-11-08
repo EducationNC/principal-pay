@@ -3,43 +3,53 @@
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script type="text/javascript" src="/scripts/pym.js/dist/pym.v1.min.js"></script>
   <script type="text/javascript" src="js/jquery.floatlabel.js"></script>
+  <!-- BOOTSTRAP -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
   <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700" rel="stylesheet">
   <link rel="stylesheet" href="css/jquery.floatlabel.css" />
 
   <link rel="stylesheet" href="css/style.css" />
+
+
 </head>
 
 <body>
-
-<h1>Here it is!</h1>
-
-<!-- state_mo = 5113;
-local_mo = 700;
-other_mo = 661;
-years_exp = 20;
-enroll_num = 2;
-principal_performance[1415] = 3;
-principal_performance[1516] = 2;
-principal_performance[1617] = 2; -->
-
-<form id="calc_form">
-  <h3>Your monthly 2016-17 paystub:</h3>
-  <div class="js-float-label-wrapper">
-    <label for="state_mo">State Principal Pay</label>
-    <input id="state_mo" class="income-input" type="text">
-  </div>
-  <div class="js-float-label-wrapper">
-    <label for="local_mo">Local (Supplement)</label>
-    <input id="local_mo" class="income-input" type="text">
-  </div>
-  <div class="js-float-label-wrapper">
-    <label for="other_mo">Other</label>
-    <input id="other_mo" class="income-input" type="text">
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1>Principal Pay Calculator</h1>
+    </div>
   </div>
 
-</form>
-<button id="calculate">Submit</button>
+  <!-- state_mo = 5113;
+  local_mo = 700;
+  other_mo = 661;
+  years_exp = 20;
+  enroll_num = 2;
+  principal_performance[1415] = 3;
+  principal_performance[1516] = 2;
+  principal_performance[1617] = 2; -->
+
+  <form id="calc_form">
+    <h3>Your monthly 2016-17 paystub:</h3>
+    <div class="js-float-label-wrapper">
+      <label for="state_mo">State Principal Pay</label>
+      <input id="state_mo" class="income-input" type="text">
+    </div>
+    <div class="js-float-label-wrapper">
+      <label for="local_mo">Local (Supplement)</label>
+      <input id="local_mo" class="income-input" type="text">
+    </div>
+    <div class="js-float-label-wrapper">
+      <label for="other_mo">Other</label>
+      <input id="other_mo" class="income-input" type="text">
+    </div>
+
+  </form>
+  <button id="calculate">Submit</button>
+</div>
 
 <script>
 $(document).ready(function(){

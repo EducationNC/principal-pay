@@ -2,71 +2,78 @@
 <head>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script type="text/javascript" src="/scripts/pym.js/dist/pym.v1.min.js"></script>
+  <script type="text/javascript" src="js/jquery.floatlabel.js"></script>
 
-  <style>
-  form {
-    width: 100%;
-    max-width: 700px;
-    margin: 60px auto;
-    }
-  form input {
-      font-size: 30px;
-      padding: 0 20px;
-      border: 2px solid #ccc;
-      width: 100%;
-      color: #666;
-      line-height: 3;
-      border-radius: 7px;
-      font-family: 'PT Sans', sans-serif;
-      font-weight: bold;
-  }
-  form input:focus {
-      outline: 0;
-  }
-  form input.error {
-      border-color: #ff0000;
-  }
-  form label.error {
-      background-color: #ff0000;
-      color: #fff;
-      padding: 6px;
-      font-size: 11px;
-  }
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700" rel="stylesheet">
+  <link rel="stylesheet" href="css/jquery.floatlabel.css" />
 
-  label {
-      color: #999;
-      display: block;
-      margin-bottom: 10px;
-      text-transform: uppercase;
-      font-size: 18px;
-      font-weight: bold;
-      letter-spacing: 0.05em
-  }
-
-  form small {
-      color: #888;
-      font-size: 1em;
-      margin-top: 10px;
-      display: block;
-      align-self: ;
-  }
-  </style>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
 
 <h1>Here it is!</h1>
 
-<form id="form">
-  <input></input>
-</form>
-<div style="height:800px;width:200px;background-color:green;"> Wow check out this sweet graphic.</div>
+<!-- state_mo = 5113;
+local_mo = 700;
+other_mo = 661;
+years_exp = 20;
+enroll_num = 2;
+principal_performance[1415] = 3;
+principal_performance[1516] = 2;
+principal_performance[1617] = 2; -->
 
+<form id="calc_form">
+  <h3>Your monthly 2016-17 paystub:</h3>
+  <div class="js-float-label-wrapper">
+    <label for="state_mo">State Principal Pay</label>
+    <input id="state_mo" class="income-input" type="text">
+  </div>
+  <div class="js-float-label-wrapper">
+    <label for="local_mo">Local (Supplement)</label>
+    <input id="local_mo" class="income-input" type="text">
+  </div>
+  <div class="js-float-label-wrapper">
+    <label for="other_mo">Other</label>
+    <input id="other_mo" class="income-input" type="text">
+  </div>
+
+</form>
+<button id="calculate">Submit</button>
 
 <script>
 $(document).ready(function(){
   //pym stuff
   var pymChild = new pym.Child();
+
+  //initialize floatlabeljs
+  $( '.js-float-label-wrapper' ).FloatLabel();
+
+  $('#calculate').click(function(e){
+    var years_exp = 20;
+
+    var inp_str = ["state_mo", "local_mo", "other_mo"]
+    var incomes = {
+      "state_mo": 0,
+      "local_mo": 0,
+      "other_mo": 0
+    }
+
+    for (i in inp_str){
+      if ($('#' + inp_str[i]).val() === $('[for=' + inp_str[i] + ']').html()){
+        console.log(inp_str[i] + ' is empty')
+      } else {
+        incomes[inp_str[i]] = $('#' + inp_str[i]).val();
+      }
+    }
+
+    console.log(parseInt(incomes["local_mo"]));
+
+    getEstimatedAnnualCompensation(parseInt(incomes["local_mo"]),
+    parseInt(incomes["state_mo"]), parseInt(incomes["other_mo"]), years_exp)
+
+
+  })
 
 
 /**** FORM VALIDATION ****/
@@ -150,18 +157,15 @@ $(INPUT).on("keyup", function(e){
     "E5":	88921
   }
 
-  //example
-  state_mo = 5113;
-  local_mo = 700;
-  other_mo = 661;
-  years_exp = 20;
-  enroll_num = 2;
-  principal_performance[1415] = 3;
-  principal_performance[1516] = 2;
-  principal_performance[1617] = 2;
-
-  console.log("The estimated annual compensation for this teacher is: " + getEstimatedAnnualCompensation(local_mo, state_mo, other_mo, years_exp));
-
+  //EXAMPLE
+  // state_mo = 5113;
+  // local_mo = 700;
+  // other_mo = 661;
+  // years_exp = 20;
+  // enroll_num = 2;
+  // principal_performance[1415] = 3;
+  // principal_performance[1516] = 2;
+  // principal_performance[1617] = 2;
 
   function getEstimatedAnnualCompensation(local_mo, state_mo, other_mo, years_exp){
     var adm_score = getADMScore(local_mo, state_mo, other_mo);

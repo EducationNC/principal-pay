@@ -1,12 +1,15 @@
-<!DOCTYPE html>
+<!DOCTYPE html lang="en">
 <head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page Title less than 65 characters</title>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script type="text/javascript" src="/scripts/pym.js/dist/pym.v1.min.js"></script>
-  <script type="text/javascript" src="js/jquery.floatlabel.js"></script>
   <!-- BOOTSTRAP -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-
+  <script type="text/javascript" src="js/jquery.floatlabel.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700" rel="stylesheet">
   <link rel="stylesheet" href="css/jquery.floatlabel.css" />
 
@@ -37,25 +40,25 @@
       <h3>Your monthly 2016-17 paystub:</h3>
       <div class="js-float-label-wrapper">
         <label for="state_mo">State Principal Pay</label>
-        <input id="state_mo" class="income-input" type="text" maxlength="6">
+        <input id="state_mo" class="income-input form-control" type="text" maxlength="6">
       </div>
       <div class="js-float-label-wrapper">
         <label for="local_mo">Local (Supplement)</label>
-        <input id="local_mo" class="income-input" type="text" maxlength="6">
+        <input id="local_mo" class="income-input form-control" type="text" maxlength="6">
       </div>
       <div class="js-float-label-wrapper">
         <label for="other_mo">Other</label>
-        <input id="other_mo" class="income-input" type="text" maxlength="6">
+        <input id="other_mo" class="income-input form-control" type="text" maxlength="6">
       </div>
 
       <h3>Your years of experience:</h3>
       <div class="js-float-label-wrapper">
         <label for="years_exp">Years of Experience</label>
-        <input id="years_exp" class="exp-input" type="text" maxlength="2">
+        <input id="years_exp" class="exp-input form-control" type="text" maxlength="2">
       </div>
 
       <h3>Your student population (ADM):</h3>
-      <select id="adm" name="adm">
+      <select id="adm" name="adm" class="form-control">
         <option value="0" selected>Select One</option>
         <option value="1">0-400</option>
         <option value="2">401-700</option>
@@ -69,7 +72,7 @@
     <div class="row">
       <div class="col-lg-4">
         <label for="1415">2014-2015:</label>
-        <select id="1415" name="1415">
+        <select id="1415" name="1415" class="form-control">
           <option value="0" selected>Select One</option>
           <option value="1">Exceeded</option>
           <option value="2">Met</option>
@@ -81,7 +84,7 @@
 
       <div class="col-lg-4">
         <label for="1516">2015-2016:</label>
-        <select id="1516" name="1516">
+        <select id="1516" name="1516" class="form-control">
           <option value="0" selected>Select One</option>
           <option value="1">Exceeded</option>
           <option value="2">Met</option>
@@ -93,7 +96,7 @@
 
     <div class="col-lg-4">
       <label for="1617">2016-2017:</label>
-      <select id="1617" name="1617">
+      <select id="1617" name="1617" class="form-control">
         <option value="0" selected>Select One</option>
         <option value="1">Exceeded</option>
         <option value="2">Met</option>

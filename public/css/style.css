@@ -8,7 +8,7 @@ h1{
 
 /* */
 
-form {
+/*form {
   width: 100%;
   max-width: 700px;
   margin: 60px auto;
@@ -53,13 +53,36 @@ form small {
     margin-top: 10px;
     display: block;
     align-self: ;
-}
+}*/
 
 /*floatlabel fixes*/
 .js-float-label-wrapper.focused input,
 .js-float-label-wrapper.populated input,
 .js-float-label-wrapper.focused textarea,
 .js-float-label-wrapper.populated textarea{
+  font-size:1.5em;
+  padding-top:2.2em;
+
+}
+
+.js-float-label-wrapper.focused label,
+.js-float-label-wrapper.populated label{
+
+}
+
+.js-float-label-wrapper input{
+  font-size:30px;
   padding:1em;
-  padding-bottom:.5em;
+}
+
+
+.js-float-label-wrapper{
+  margin-bottom:1.5em;
+}
+
+@media (max-width:760px){
+  .container{
+    padding:0;
+    width:100vw;
+  }
 }

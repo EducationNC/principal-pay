@@ -10,7 +10,9 @@
 
 .js-float-label-wrapper.focused label,
 .js-float-label-wrapper.populated label {
-	opacity: 1
+	opacity: 1;
+	color:#666;
+	font-weight:700;
 }
 
 .js-float-label-wrapper.focused input,

@@ -72,33 +72,7 @@ $(document).ready(function(){
 /**** FORM VALIDATION ****/
 
 // https://webdesign.tutsplus.com/tutorials/auto-formatting-input-value--cms-26745
-const FORM = $('#form');
-const INPUT = $(FORM).find("input");
 
-$(INPUT).on("keyup", function(e){
-
-    var selection = window.getSelection().toString();
-    if ( selection !== '' ) {
-        return;
-    }
-
-    if ( $.inArray( event.keyCode, [38,40,37,39] ) !== -1 ) {
-        return;
-    }
-
-    var $this = $(this);
-    var input = $this.val();
-
-    var input = input.replace(/[\D\s\._\-]+/g, "");
-    input = input ? parseInt(input, 10) : 0;
-
-    $this.val(function(){
-      return (input === 0) ? "" : input.toLocaleString("en-US");
-
-  });
-
-
-})
 
 
 
@@ -244,7 +218,7 @@ $(INPUT).on("keyup", function(e){
 
       //Principal has not supervised a school for 2 of the last 3 years
       //Not Met at least 2 of the last 3
-      if (didntLeadCounter == 2 || notMetCounter == 2){
+      if (didntLeadCounter == 2 || notMetCounter >= 2){
         return "B";
       }
       //Met + Met + NotMet/Exceeded

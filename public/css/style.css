@@ -1,4 +1,4 @@
-
+/*main DOM elements*/
 body{
   font-family:'Lato', sans-serif;
 }
@@ -6,54 +6,6 @@ h1{
   text-align: center;
 }
 
-/* */
-
-/*form {
-  width: 100%;
-  max-width: 700px;
-  margin: 60px auto;
-  }
-form input {
-    font-size: 30px;
-    padding: 0 20px;
-    border: 2px solid #ccc;
-    width: 100%;
-    color: #666;
-    line-height: 3;
-    border-radius: 7px;
-    font-family: 'PT Sans', sans-serif;
-    font-weight: bold;
-}
-form input:focus {
-    outline: 0;
-}
-form input.error {
-    border-color: #ff0000;
-}
-form label.error {
-    background-color: #ff0000;
-    color: #fff;
-    padding: 6px;
-    font-size: 11px;
-}
-
-label {
-    color: #999;
-    display: block;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    font-size: 18px;
-    font-weight: bold;
-    letter-spacing: 0.05em
-}
-
-form small {
-    color: #888;
-    font-size: 1em;
-    margin-top: 10px;
-    display: block;
-    align-self: ;
-}*/
 
 /*floatlabel fixes*/
 .js-float-label-wrapper.focused input,
@@ -65,19 +17,51 @@ form small {
 
 }
 
-.js-float-label-wrapper.focused label,
-.js-float-label-wrapper.populated label{
-
-}
-
 .js-float-label-wrapper input{
   font-size:30px;
   padding:1em;
 }
 
-
 .js-float-label-wrapper{
   margin-bottom:1.5em;
+}
+
+/* sidebar */
+.sidebar-wrapper{
+  position:absolute;
+  display:inline-block;
+  right:0;
+  }
+
+.sidebar-inner-desktop{
+  position:fixed;
+}
+
+.table-num{
+  text-align:right;
+}
+.sidebar-inner-mobile{
+  display:none;
+}
+
+/*media queries*/
+
+@media (max-width:998px){
+  .sidebar-wrapper{
+    width: 100%;
+    bottom: 0;
+    position: fixed;
+    background-color: green;
+    height: 40px;
+    max-width:none;
+  }
+  .sidebar-inner-desktop{
+    display:none;
+  }
+  .sidebar-inner-mobile{
+    display:inline-block;
+  }
+
 }
 
 @media (max-width:760px){

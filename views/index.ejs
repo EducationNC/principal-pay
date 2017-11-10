@@ -3,7 +3,8 @@
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Page Title less than 65 characters</title>
+  <link rel="shortcut icon" href="icon.ico" type="image/x-icon">
+  <title>EdNC: Principal Pay Calculator</title>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script type="text/javascript" src="/scripts/pym.js/dist/pym.v1.min.js"></script>
   <!-- BOOTSTRAP -->
@@ -26,16 +27,8 @@
     </div>
   </div>
 
-  <!-- state_mo = 5113;
-  local_mo = 700;
-  other_mo = 661;
-  years_exp = 20;
-  enroll_num = 2;
-  principal_performance[1415] = 3;
-  principal_performance[1516] = 2;
-  principal_performance[1617] = 2; -->
 <div class="row">
-  <div class="col-12">
+  <div class="col-10">
     <form id="calc_form">
       <h3>Your monthly 2016-17 paystub:</h3>
       <div class="js-float-label-wrapper">
@@ -110,15 +103,78 @@
     </form>
   </div>
 
+  <div class="sidebar-wrapper col-lg-2 col-md-12 col-sm-12">
+    <div class="sidebar-inner-desktop">
+      <div class="col-lg-12">
+        <div class="row">
+          <div class="col-lg-12">
+            <h4>Estimated 2017-18 Income</h4>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6">
+            <p>State</p>
+          </div>
+          <div class="col-lg-6">
+            <p class="table-num">$0</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6">
+            <p>Local</p>
+          </div>
+          <div class="col-lg-6">
+            <p class="table-num">$0</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6">
+            <p>Other</p>
+          </div>
+          <div class="col-lg-6">
+            <p class="table-num">$0</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6">
+            <p>State Hold Harmless</p>
+          </div>
+          <div class="col-lg-6">
+            <p class="table-num">$0</p>
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+          <div class="col-lg-6">
+            <p>Total</p>
+          </div>
+          <div class="col-lg-6">
+            <p class="table-num">$0</p>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+    <div class="sidebar-inner-mobile">
+      <h3>Results here</h3>
+    </div>
+  </div>
+
 </div>
 
 <div class="row">
-  <button id="calculate">Submit</button>
+  <button class="form-control" id="calculate">Submit</button>
 </div>
 </div>
 
 <script src="js/main.js" type="text/javascript"></script>
-
 
 
 

@@ -3,7 +3,7 @@ $(document).ready(function(){
   var pymChild = new pym.Child();
 
   //initialize floatlabeljs
-  $( '.js-float-label-wrapper' ).FloatLabel();
+  // $( '.js-float-label-wrapper' ).FloatLabel();
 
   $('#calculate').click(function(e){
     var years_exp = 0;

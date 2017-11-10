@@ -1,6 +1,6 @@
 # Principal Pay Calculator
 
-<img src="apple_ruler.png" />
+<img src="apple_ruler-02.png" />
 
 A calculator determining principal pay for a N.C. principal based on previous performance and income. Original calculations were created in a spreadsheet by the [Business for Educational Success and Transformation of North Carolina (BEST NC)](http://best-nc.org/about-us/).
 
@@ -33,3 +33,7 @@ This graphic lives on Heroku but someday will live on AWS. You can view the grap
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Other Credit
+
+The icon at the top of this README is a result of me playing with FreePik vectors at 1 a.m.

@@ -1,6 +1,6 @@
 # Principal Pay Calculator
 
-<img src="apple_ruler.png" />
+<img src="apple_ruler-02.png" />
 
 A calculator determining principal pay for a N.C. principal based on previous performance and income. Original calculations were created in a spreadsheet by the [Business for Educational Success and Transformation of North Carolina (BEST NC)](http://best-nc.org/about-us/).
 

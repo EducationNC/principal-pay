@@ -33,3 +33,7 @@ This graphic lives on Heroku but someday will live on AWS. You can view the grap
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Other Credit
+
+The icon at the top of this README is a result of me playing with FreePik vectors at 1 a.m.

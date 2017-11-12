@@ -25,6 +25,7 @@ This graphic lives on Heroku but someday will live on AWS. You can view the grap
 * [Bootstrap 4](https://v4-alpha.getbootstrap.com/getting-started/download/)
 * [Pym.js](http://blog.apps.npr.org/pym.js/) - for responsive embedding
 * [FloatLabel.js](https://github.com/m10l/FloatLabel.js)- for label movement on forms
+* [rangeslider.js](https://github.com/andreruffert/rangeslider.js) - for responsive input sliders
 
 ## Authors
 

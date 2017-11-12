@@ -25,6 +25,20 @@ h1{
 .js-float-label-wrapper{
   margin-bottom:1.5em;
 }*/
+#state_mo{
+  border: none;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0;
+  font-size: 26px;
+  width: 100%;
+  border-radius: unset;
+}
+.dollar-label{
+  border: none;
+    padding: 0;
+    background: none;
+}
+
 
 /* sidebar */
 .sidebar-wrapper{

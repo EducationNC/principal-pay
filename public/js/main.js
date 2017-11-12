@@ -2,11 +2,12 @@ $(document).ready(function(){
   //pym stuff
   var pymChild = new pym.Child();
 
-  //initialize floatlabeljs
-  // $( '.js-float-label-wrapper' ).FloatLabel();
+  function formatInput(x){
+     return "$" + x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
 
-  $('#calculate').click(function(e){
-    var years_exp = 0;
+  //get from the sliders
+  $('.output-trigger').change(function(){
 
     var income_inp_str = ["state_mo", "local_mo", "other_mo"]
     var incomes = {
@@ -20,59 +21,33 @@ $(document).ready(function(){
       1516: 0,
       1617: 0
     }
-    var adm = 0;
+    var years_exp = $('#years_exp').val();
+    var adm = $('#adm').val();
 
     /*** INCOME ***/
     for (i in income_inp_str){
-      //check if no input
-      if ($('#' + income_inp_str[i]).val() === $('[for=' + income_inp_str[i] + ']').html()){
-        //income validation - *required
-        if (income_inp_str[i] == "state_mo"){
-          alert("Please enter your state income");
-        }
-      } else { //if valid input, set it
         incomes[income_inp_str[i]] = $('#' + income_inp_str[i]).val();
       }
-    }
 
-    /*** YEARS EXPERIENCE ***/
-    //check if no input
-    if ($('#years_exp').val() === $('[for=years_exp]').html()){
-      alert("Please enter your years of experience.");
-    } else { //if valid input, set it
-      years_exp = $('#years_exp').val();
-    }
-
-    /*** ADM ***/
-    if ($('#adm').val() == 0){
-      alert("Please enter your ADM.");
-    } else { //if valid input, set it
-      adm = $('#adm').val();
-    }
-
-    /*** PERFORMANCE ***/
     for (i in perf_inp_str){
-      //check if no input
-      if ($('#' + perf_inp_str[i]).val() == 0){
-        //income validation - *required
-        alert("Please enter all performance inputs."); //runs 3x
-      } else { //if valid input, set it
-        principal_performance[parseInt(perf_inp_str[i])] = parseInt($('#' + perf_inp_str[i]).val());
+        principal_performance[parseFloat(perf_inp_str[i])] = parseFloat($('#' + perf_inp_str[i]).val());
       }
-    }
 
+    getEstimatedAnnualCompensation(parseFloat(incomes["local_mo"].replace(",","")),
+    parseFloat(incomes["state_mo"].replace(",","")), parseFloat(incomes["other_mo"].replace(",","")), parseFloat(years_exp), principal_performance, adm);
 
-    console.log(getEstimatedAnnualCompensation(parseInt(incomes["local_mo"]),
-    parseInt(incomes["state_mo"]), parseInt(incomes["other_mo"]), parseInt(years_exp), principal_performance, adm));
+    });
 
+function updateResults(state, local, other, state_hold_harmless){
 
-  })
+  var total = state+local+other+state_hold_harmless;
 
-
-/**** FORM VALIDATION ****/
-
-// https://webdesign.tutsplus.com/tutorials/auto-formatting-input-value--cms-26745
-
+  $('#result_total').html(formatInput(total));
+  $('#result_local').html(formatInput(local));
+  $('#result_state').html(formatInput(state));
+  $('#result_statehold').html(formatInput(state_hold_harmless));
+  $('#result_other').html(formatInput(other));
+}
 
 
 
@@ -111,25 +86,7 @@ $(document).ready(function(){
     "E5":	88921
   }
 
-  //EXAMPLE
-  // var principal_performance = {
-  //   1415: 0,
-  //   1516: 0,
-  //   1718: 0
-  // }
-  // var state_mo = 5113;
-  // var local_mo = 700;
-  // var other_mo = 661;
-  // var years_exp = 20;
-  // var adm = 2;
-  // principal_performance[1415] = 3;
-  // principal_performance[1516] = 2;
-  // principal_performance[1617] = 2;
-
-  // console.log(getEstimatedAnnualCompensation(local_mo, state_mo, other_mo, years_exp, principal_performance, adm));
-
   function getEstimatedAnnualCompensation(local_mo, state_mo, other_mo, years_exp, principal_performance, adm_num){
-    // var adm_num = getADMNum(adm);
     var performance_letter = getPerformanceLetter(principal_performance);
     var teacher_score = getTeacherScore(adm_num, performance_letter);
 
@@ -148,10 +105,9 @@ $(document).ready(function(){
       state_hold_harmless = state_annual + est_longevity - est_state_annual;
     }
 
-    //debugger
-
     //return the total annual compensation
-    return est_state_annual+local_annual+other_annual+state_hold_harmless;
+    //return est_state_annual+local_annual+other_annual+state_hold_harmless;
+    updateResults(est_state_annual, local_annual, other_annual, state_hold_harmless)
   }
 
   function getTotalSalary(local_mo, state_mo, other_mo){
@@ -173,24 +129,6 @@ $(document).ready(function(){
 
     return Math.round(est_longevity*12*state_mo);
   }
-
-
-
-  // function getADMNum(adm){
-  //
-  //   if (adm >= 0 && adm <= 400){
-  //     return 1;
-  //   } else if (adm >= 401 && adm <= 700){
-  //     return 2;
-  //   } else if (adm >= 701 && adm <= 1000){
-  //     return 3;
-  //   } else if (adm >= 1001 && adm <= 1300){
-  //     return 4;
-  //   } else {
-  //     return 5;
-  //   }
-  //
-  // }
 
   function getPerformanceLetter(principal_performance){
 

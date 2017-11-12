@@ -102,6 +102,7 @@ function startMeUp(){
         principal_performance[parseFloat(perf_inp_str[i])] = parseFloat($('#' + perf_inp_str[i]).val());
       }
 
+      //debugger
     getEstimatedAnnualCompensation(parseFloat(incomes["local_mo"].replace(",","")),
     parseFloat(incomes["state_mo"].replace(",","")), parseFloat(incomes["other_mo"].replace(",","")), parseFloat(years_exp), principal_performance, adm);
 
@@ -111,6 +112,8 @@ function startMeUp(){
 function updateResults(state, local, other, state_hold_harmless){
 
   var total = state+local+other+state_hold_harmless;
+
+  //debugger
 
   $('#result_total').html(formatInput(total));
   $('#result_local').html(formatInput(local));

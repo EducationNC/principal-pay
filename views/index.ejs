@@ -36,11 +36,11 @@
       <h3>Your 2016-17 paystub:</h3>
         <label for="state_mo">State Principal Pay</label>
         <div class="row" style="margin-bottom: 24px;">
-          <div class="col-lg-2 input-group">
+          <div class="col-lg-4 input-group">
             <span class="input-group-addon dollar-label">$</span>
             <input id="state_mo" class="income-input form-control output-trigger" type="text" value="5,113" maxlength="6">
           </div>
-          <div class="col-lg-10" style="padding-top: 10px;">
+          <div class="col-lg-8" style="padding-top: 10px;">
             <input id="state_range" class="output-trigger" type="range" min="2000" max="9000" value="5113" data-rangeslider>
           </div>
         </div>
@@ -48,22 +48,22 @@
         <label for="local_mo">Local (Supplement)</label>
 
         <div class="row" style="margin-bottom: 24px;">
-          <div class="col-lg-2 input-group">
+          <div class="col-lg-4 input-group">
             <span class="input-group-addon dollar-label">$</span>
             <input id="local_mo" class="income-input form-control output-trigger" value="700" type="text" maxlength="6">
           </div>
-          <div class="col-lg-10" style="padding-top: 10px;">
+          <div class="col-lg-8" style="padding-top: 10px;">
             <input id="local_range" class="output-trigger" type="range" min="0" max="2000" value="700" data-rangeslider>
           </div>
         </div>
 
         <label for="other_mo">Other</label>
         <div class="row" style="margin-bottom: 24px;">
-          <div class="col-lg-2 input-group">
+          <div class="col-lg-4 input-group">
             <span class="input-group-addon dollar-label">$</span>
             <input id="other_mo" class="income-input form-control output-trigger" value="611" type="text" maxlength="6">
           </div>
-          <div class="col-lg-10" style="padding-top: 10px;">
+          <div class="col-lg-8" style="padding-top: 10px;">
             <input id="other_range" class="output-trigger" type="range" min="0" max="2000" value="611" data-rangeslider>
           </div>
         </div>
@@ -151,7 +151,7 @@
             <p>State</p>
           </div>
           <div class="col-lg-6">
-            <p id="result_state" class="table-num">$0</p>
+            <p class="result_state" class="table-num">$0</p>
           </div>
         </div>
 
@@ -160,7 +160,7 @@
             <p>Local</p>
           </div>
           <div class="col-lg-6">
-            <p id="result_local" class="table-num">$0</p>
+            <p class="result_local" class="table-num">$0</p>
           </div>
         </div>
 
@@ -169,7 +169,7 @@
             <p>Other</p>
           </div>
           <div class="col-lg-6">
-            <p id="result_other" class="table-num">$0</p>
+            <p class="result_other" class="table-num">$0</p>
           </div>
         </div>
 
@@ -178,7 +178,7 @@
             <p>State Hold Harmless</p>
           </div>
           <div class="col-lg-6">
-            <p id="result_statehold" class="table-num">$0</p>
+            <p class="result_statehold" class="table-num">$0</p>
           </div>
         </div>
 
@@ -189,7 +189,7 @@
             <p>Total</p>
           </div>
           <div class="col-lg-6">
-            <p id="result_total" class="table-num">$0</p>
+            <p class="result_total" class="table-num">$0</p>
           </div>
         </div>
 
@@ -197,7 +197,12 @@
       </div>
     </div>
     <div class="sidebar-inner-mobile">
-      <h3>Results here</h3>
+      <div class="row">
+        <div class="col-12 sidebar-mobile-content-wrapper">
+          <p>Total: </p>
+          <p class="result_total" class="table-num">$0</p>
+        </div>
+      </div>
     </div>
   </div>
 

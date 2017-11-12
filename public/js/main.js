@@ -115,11 +115,11 @@ function updateResults(state, local, other, state_hold_harmless){
 
   //debugger
 
-  $('#result_total').html(formatInput(total));
-  $('#result_local').html(formatInput(local));
-  $('#result_state').html(formatInput(state));
-  $('#result_statehold').html(formatInput(state_hold_harmless));
-  $('#result_other').html(formatInput(other));
+  $('.result_total').html(formatInput(total));
+  $('.result_local').html(formatInput(local));
+  $('.result_state').html(formatInput(state));
+  $('.result_statehold').html(formatInput(state_hold_harmless));
+  $('.result_other').html(formatInput(other));
 }
 
 

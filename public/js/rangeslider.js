@@ -11,9 +11,9 @@ $(function(){
 
 		},
 		onSlide:function(position, value){
-      $('#state_mo').val(formatInput($('#state_range').val()));
-      $('#local_mo').val(formatInput($('#local_range').val()));
-      $('#other_mo').val(formatInput($('#other_range').val()));
+      // $('#state_mo').val(formatInput($('#state_range').val()));
+      // $('#local_mo').val(formatInput($('#local_range').val()));
+      // $('#other_mo').val(formatInput($('#other_range').val()));
 
 
 

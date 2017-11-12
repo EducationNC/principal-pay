@@ -5,7 +5,25 @@ body{
 h1{
   text-align: center;
 }
-
+h3:first-of-type{
+  margin-top:0;
+}
+h3{
+  font-size:24px;
+  margin-top:1.2em;
+}
+#adm, #years_exp{
+  /*width:max-content;*/
+  width:103px;
+}
+.flex-row{
+  display: flex;
+}
+.flex-row h3{
+  margin-right: 1em;
+  vertical-align: bottom;
+  margin-bottom: 0;
+}
 
 /*floatlabel fixes*/
 /*.js-float-label-wrapper.focused input,
@@ -57,6 +75,16 @@ h1{
 .sidebar-inner-mobile{
   display:none;
 }
+.row.total{
+background-color: #a9bb46;
+padding: 10px;
+border-radius: 6px;
+}
+#result_total{
+  font-size: 30px;
+    font-weight: 700;
+}
+
 
 /*rangeslider*/
 /*https://codepen.io/khadkamhn/pen/qbPQrv*/
@@ -102,7 +130,7 @@ h1{
 
 .rangeslider__fill{
 	position:absolute;
-	background:#ff637b;
+	background:#a9bb46;
 }
 .rangeslider--horizontal .rangeslider__fill{
 	top:0;
@@ -121,14 +149,14 @@ h1{
 	margin-top:-14px;
 	background:white;
 	position:absolute;
-	background:#ff637b;
+	background:#798633;
 	border-radius:50%;
 	display:inline-block;
   box-shadow:none;
   border:none;
 }
 .rangeslider__handle:active{
-	background:#ff5a7b;
+	background:#798633;
 }
 
 .rangeslider__fill,

@@ -169,49 +169,45 @@ function updateResults(state, local, other, state_hold_harmless){
 
   function getPerformanceLetter(principal_performance){
 
-    var exceededCounter = 0, metCounter = 0, notMetCounter = 0, ineligibleCounter = 0, didntLeadCounter = 0;
+    var totalCounter = 0;
 
       for (i in principal_performance){
         switch(principal_performance[i]){
           case 1:
-            exceededCounter++;
+            totalCounter+=10;
             break;
           case 2:
-            metCounter++;
+            totalCounter+=1;
             break;
           case 3:
-            notMetCounter++;
+            totalCounter+=0;
             break;
           case 4:
-            ineligibleCounter++;
+            totalCounter+=7;
             break;
           case 5:
-            didntLeadCounter++;
+            totalCounter+=0;
             break;
         }
       }
 
-      //Principal has not supervised a school for 2 of the last 3 years
-      //Not Met at least 2 of the last 3
-      if (didntLeadCounter == 2 || notMetCounter >= 2){
-        return "B";
-      }
-      //Met + Met + NotMet/Exceeded
-      if (metCounter == 2 && (notMetCounter == 1 || exceededCounter == 1)){
-        return "G";
-      }
-      //Principal for 2 of the last 3 years of a school not eligible to receive a school growth score
-      if (ineligibleCounter == 2){
-        return "G";
-      }
-      //Exceeded + Met + Not Met
-      if (exceededCounter == 1 && metCounter == 1 && notMetCounter == 1){
-        return "G";
-      }
-      //Exceeded + Exceeded + Not Met/Met/Exceeded
-      if (exceededCounter == 2 && (notMetCounter == 1 || metCounter == 1 || exceededCounter == 1)){
+      if (totalCounter==30 || totalCounter==27 || totalCounter==20){
         return "E";
       }
+      if (totalCounter==17 || totalCounter==10 || totalCounter==8 || totalCounter==7 || totalCounter==0 || totalCounter==1){
+        return "B";
+      } if (totalCounter == 21){
+        //the one exception in the spreadsheet is a sum of 21 can lead to diff grades depending on order
+        if (principal_performance[1415]==4 && principal_performance[1516]==4 && principal_performance[1617]==4){
+          return "G";
+        } else {
+          return "E";
+        }
+      }
+      else {
+        return "G";
+      }
+
 
   }
 

@@ -34,41 +34,38 @@
   <div class="col-lg-8 col-sm-12">
     <form id="calc_form">
       <h3>Your 2016-17 monthly paystub:</h3>
-        <label for="state_mo">State Principal Pay</label>
-        <div class="row" style="margin-bottom: 24px;">
-          <div class="col-lg-4 input-group">
+      <div class="row" style="margin-bottom: 24px;">
+          <div class="col-lg-6">
+            <label for="state_mo">State Principal Pay</label>
+          </div>
+          <div class="col-lg-6 input-group">
             <span class="input-group-addon dollar-label">$</span>
             <input type="tel" id="state_mo" class="income-input form-control output-trigger" type="text" value="5,113" maxlength="6">
           </div>
-          <div class="col-lg-8" style="padding-top: 10px;">
-            <input id="state_range" class="output-trigger" type="range" min="2000" max="9000" value="5113" data-rangeslider>
-          </div>
         </div>
 
-        <label for="local_mo">Local (Supplement)</label>
+
 
         <div class="row" style="margin-bottom: 24px;">
-          <div class="col-lg-4 input-group">
+          <div class="col-lg-6">
+            <label for="local_mo">Local (Supplement)</label>
+          </div>
+          <div class="col-lg-6 input-group">
             <span class="input-group-addon dollar-label">$</span>
             <input id="local_mo" class="income-input form-control output-trigger" value="700" type="text" maxlength="6">
           </div>
-          <div class="col-lg-8" style="padding-top: 10px;">
-            <input id="local_range" class="output-trigger" type="range" min="0" max="2000" value="700" data-rangeslider>
-          </div>
         </div>
 
-        <label for="other_mo">Other</label>
+
         <div class="row" style="margin-bottom: 24px;">
-          <div class="col-lg-4 input-group">
+          <div class="col-lg-6">
+            <label for="other_mo">Other</label>
+          </div>
+          <div class="col-lg-6 input-group">
             <span class="input-group-addon dollar-label">$</span>
             <input id="other_mo" class="income-input form-control output-trigger" value="611" type="text" maxlength="6">
           </div>
-          <div class="col-lg-8" style="padding-top: 10px;">
-            <input id="other_range" class="output-trigger" type="range" min="0" max="2000" value="611" data-rangeslider>
-          </div>
         </div>
-
-        <hr>
 
       <div class="row" style="margin-top:1.2em;">
         <div class="col-6">
@@ -78,8 +75,6 @@
           <input id="years_exp" class="exp-input form-control output-trigger" value="20" type="text" maxlength="2">
         </div>
       </div>
-
-      <hr>
 
       <div class="row" style="margin-top:1.2em;">
         <div class="col-6">
@@ -95,7 +90,6 @@
           </select>
         </div>
     </div>
-    <hr>
 
       <h3>Your school performance:</h3>
 

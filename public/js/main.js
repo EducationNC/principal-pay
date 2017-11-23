@@ -60,7 +60,7 @@ function startMeUp(){
     1617: 0
   }
   var years_exp = $('#years_exp').val();
-  var adm = $('#adm').val();
+  var adm = $('.adm-btn.active-btn input').val();
 
   /*** INCOME ***/
   for (i in income_inp_str){
@@ -68,15 +68,29 @@ function startMeUp(){
     }
 
   for (i in perf_inp_str){
-      principal_performance[parseFloat(perf_inp_str[i])] = parseFloat($('#' + perf_inp_str[i]).val());
+      principal_performance[parseFloat(perf_inp_str[i])] = parseFloat($('.perf-btn-' + perf_inp_str[i] + '.active-btn input').val())
     }
 
+
   getEstimatedAnnualCompensation(parseFloat(incomes["local_mo"].replace(",","")),
-  parseFloat(incomes["state_mo"].replace(",","")), parseFloat(incomes["other_mo"].replace(",","")), parseFloat(years_exp), principal_performance, adm);
+  parseFloat(incomes["state_mo"].replace(",","")), parseFloat(incomes["other_mo"].replace(",","")), parseFloat(years_exp), principal_performance, parseFloat(adm));
 
 
   //get from the sliders
   $('.output-trigger').change(function(){
+    if ($(this).hasClass("rad-trig")){
+      $(".rad-trig").parent().removeClass("active-btn")
+      $(this).parent().addClass("active-btn")
+    } else if ($(this).hasClass("rad-trig1")){
+      $(".rad-trig1").parent().removeClass("active-btn")
+      $(this).parent().addClass("active-btn")
+    } else if ($(this).hasClass("rad-trig2")){
+      $(".rad-trig2").parent().removeClass("active-btn")
+      $(this).parent().addClass("active-btn")
+    } else if ($(this).hasClass("rad-trig3")){
+      $(".rad-trig3").parent().removeClass("active-btn")
+      $(this).parent().addClass("active-btn")
+    }
 
     var income_inp_str = ["state_mo", "local_mo", "other_mo"]
     var incomes = {
@@ -91,16 +105,19 @@ function startMeUp(){
       1617: 0
     }
     var years_exp = $('#years_exp').val();
-    var adm = $('#adm').val();
+    var adm = $('.adm-btn.active-btn input').val();
+      console.log(adm);
 
     /*** INCOME ***/
     for (i in income_inp_str){
         incomes[income_inp_str[i]] = $('#' + income_inp_str[i]).val();
       }
 
-    for (i in perf_inp_str){
-        principal_performance[parseFloat(perf_inp_str[i])] = parseFloat($('#' + perf_inp_str[i]).val());
-      }
+      for (i in perf_inp_str){
+          principal_performance[parseFloat(perf_inp_str[i])] = parseFloat($('.perf-btn-' + perf_inp_str[i] + '.active-btn input').val())
+        }
+
+
 
       //debugger
     getEstimatedAnnualCompensation(parseFloat(incomes["local_mo"].replace(",","")),
@@ -113,7 +130,7 @@ function updateResults(state, local, other, state_hold_harmless){
 
   var total = state+local+other+state_hold_harmless;
 
-  //debugger
+  // debugger
 
   $('.result_total').html(formatInput(total));
   $('.result_local').html(formatInput(local));
@@ -124,6 +141,7 @@ function updateResults(state, local, other, state_hold_harmless){
 
 
   function getEstimatedAnnualCompensation(local_mo, state_mo, other_mo, years_exp, principal_performance, adm_num){
+    // debugger
     var performance_letter = getPerformanceLetter(principal_performance);
     var teacher_score = getTeacherScore(adm_num, performance_letter);
 

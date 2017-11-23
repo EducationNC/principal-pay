@@ -106,7 +106,7 @@ label.btn.btn-secondary {
 /*media queries*/
 
 @media (max-width:998px){
-  [type='range'], .rangeslider, hr{
+  /*[type='range'], .rangeslider, hr{
     display:none;
   }
   .sidebar-wrapper{
@@ -129,13 +129,13 @@ label.btn.btn-secondary {
     font-size:1.2em;
     padding: 20px;
     font-weight:700;
-  }
+  }*/
 
 }
 
 @media (max-width:760px){
-  .container{
+  /*.container{
     padding:0;
     width:100vw;
-  }
+  }*/
 }

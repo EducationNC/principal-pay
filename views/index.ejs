@@ -32,6 +32,7 @@
       <p>Previously, principals were paid by the state based on years of experience and number of teachers supervised.</p>
       <p>Under the new schedule, principals are paid based on student population and whether the school did not meet, met, or exceeded academic growth.</p>
       <p>The change caused confusion among administrators. BEST NC, in partnership with EducationNC, created the principal pay calculator below for principals to calculate their salaries under the new pay schedule. </p>
+      <p style="font-style:italic;">This calculator is for demonstration purposes. Any questions should be brought to your district’s HR team.</p>
     </div>
   </div>
 
@@ -43,9 +44,9 @@
           <div class="col-lg-6 label-wrapper">
             <label for="state_mo">State Principal Pay</label>
           </div>
-          <div class="col-lg-2 input-group">
+          <div class="col-lg-3 input-group">
             <span class="input-group-addon dollar-label">$</span>
-            <input type="tel" id="state_mo" class="income-input form-control output-trigger" type="text" value="5,113" maxlength="6">
+            <input type="number" id="state_mo" class="income-input form-control output-trigger" value="5113" max="9999">
           </div>
         </div>
 
@@ -55,9 +56,9 @@
           <div class="col-lg-6 label-wrapper">
             <label for="local_mo">Local (Supplement)</label>
           </div>
-          <div class="col-lg-2 input-group">
+          <div class="col-lg-3 input-group">
             <span class="input-group-addon dollar-label">$</span>
-            <input id="local_mo" class="income-input form-control output-trigger" value="700" type="text" maxlength="6">
+            <input id="local_mo" class="income-input form-control output-trigger" value="700" type="number" max="999">
           </div>
         </div>
 
@@ -66,9 +67,9 @@
           <div class="col-lg-6 label-wrapper">
             <label for="other_mo">Other</label>
           </div>
-          <div class="col-lg-2 input-group">
+          <div class="col-lg-3 input-group">
             <span class="input-group-addon dollar-label">$</span>
-            <input id="other_mo" class="income-input form-control output-trigger" value="661" type="text" maxlength="6">
+            <input id="other_mo" class="income-input form-control output-trigger" value="661" type="number" max="999">
           </div>
         </div>
 
@@ -78,10 +79,7 @@
           <p>* Years of state experience, for longevity calculation.</p>
         </div>
         <div class="col-lg-2 col-sm-12 input-group">
-
-
-            <input type="tel" id="years_exp" class="years-input form-control output-trigger" value="20" type="text" maxlength="2">
-
+            <input id="years_exp" class="years-input form-control output-trigger" value="20" type="number" max="99">
         </div>
       </div>
 
@@ -111,7 +109,7 @@
               <input class="form-control output-trigger rad-trig" value="4" type="radio" name="options" id="option3" autocomplete="off"> 1001-1300
             </label>
             <label class="adm-btn btn btn-secondary">
-              <input class="form-control output-trigger rad-trig" value="5" type="radio" name="options" id="option3" autocomplete="off"> 701-1000
+              <input class="form-control output-trigger rad-trig" value="5" type="radio" name="options" id="option3" autocomplete="off"> 1300+
             </label>
           </div>
         </div>

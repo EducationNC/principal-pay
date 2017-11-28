@@ -13,7 +13,14 @@ h3{
   margin-top:1.2em;
 }
 label{
- font-size: 1.4em;
+ font-size: 26px;
+ margin-bottom:0;
+}
+.label-wrapper{
+  text-align: right;
+  vertical-align: bottom;
+  font-size: 16px;
+  margin-bottom: 0;
 }
 #adm, #years_exp{
   /*width:max-content;*/

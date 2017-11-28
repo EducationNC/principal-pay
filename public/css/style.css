@@ -113,39 +113,3 @@ label.btn.btn-secondary {
   background-color:#a9bb45;
 
 }
-/*media queries*/
-
-@media (max-width:998px){
-  /*[type='range'], .rangeslider, hr{
-    display:none;
-  }
-  .sidebar-wrapper{
-
-  }
-  .sidebar-inner-desktop{
-    display:none;
-  }
-  .sidebar-inner-mobile{
-    display:inline-block;
-  }
-
-  .sidebar-mobile-content-wrapper{
-    display: flex;
-    justify-content: center;
-    width: 100vw;
-  }
-
-  .sidebar-mobile-content-wrapper p{
-    font-size:1.2em;
-    padding: 20px;
-    font-weight:700;
-  }*/
-
-}
-
-@media (max-width:760px){
-  /*.container{
-    padding:0;
-    width:100vw;
-  }*/
-}

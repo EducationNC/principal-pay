@@ -33,6 +33,7 @@ label{
   /*width:max-content;*/
   width:103px;
 }
+
 .flex-row{
   display: flex;
 }
@@ -120,3 +121,33 @@ label.btn.btn-secondary {
   background-color:#a9bb45;
 
 }
+
+
+/** style overrides ***/
+label.results{
+  font-size:21px;
+}
+
+.al-left{
+  text-align:left;
+}
+.show-med-flex{
+  display:flex;
+}
+.hide-med-flex{
+  display:none;
+}
+
+@media (max-width: 992px) {
+.show-med-flex{
+  display:none;
+}
+.hide-med-flex{
+  display:flex;
+}
+label.hide-med-flex.results {
+    font-size: 18px;
+}
+
+
+ }

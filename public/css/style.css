@@ -9,6 +9,9 @@ html, body{
   padding: 0px;*/
   overflow-x: hidden;
 }
+p{
+  font-size:14pt;
+}
 h1{
   text-align: center;
 }

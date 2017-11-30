@@ -195,7 +195,10 @@ function updateResults(state, current_state, local, other, state_hold_harmless, 
   function getLongevity(years_exp, state_mo){
     var est_longevity;
 
-    if (years_exp >= 10 && years_exp < 15){
+    if (years_exp < 10){
+      est_longevity = 0;
+    }
+    else if (years_exp >= 10 && years_exp < 15){
       est_longevity = .015;
     } else if (years_exp >= 15 && years_exp < 20){
       est_longevity = .0225;

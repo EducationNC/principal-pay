@@ -39,7 +39,7 @@
           </div>
           <div class="col-lg-3 input-group">
             <span class="input-group-addon dollar-label">$</span>
-            <input type="number" id="state_mo" class="income-input form-control output-trigger" value="5113" max="9999">
+            <input type="number" id="state_mo" class="income-input form-control output-trigger" value="5113" min="0" max="9999">
           </div>
         </div>
 
@@ -51,7 +51,7 @@
           </div>
           <div class="col-lg-3 input-group">
             <span class="input-group-addon dollar-label">$</span>
-            <input id="local_mo" class="income-input form-control output-trigger" value="700" type="number" max="999">
+            <input id="local_mo" class="income-input form-control output-trigger" value="700" type="number" min="0" max="999">
           </div>
         </div>
 
@@ -62,7 +62,7 @@
           </div>
           <div class="col-lg-3 input-group">
             <span class="input-group-addon dollar-label">$</span>
-            <input id="other_mo" class="income-input form-control output-trigger" value="661" type="number" max="999">
+            <input id="other_mo" class="income-input form-control output-trigger" value="661" type="number" min="0" max="999">
           </div>
         </div>
 
@@ -72,7 +72,7 @@
           <p>* Years of state experience, for longevity calculation.</p>
         </div>
         <div class="col-lg-2 col-sm-12 input-group">
-            <input id="years_exp" class="years-input form-control output-trigger" value="20" type="number" max="99">
+            <input id="years_exp" class="years-input form-control output-trigger" value="20" min="0" type="number" max="99">
         </div>
       </div>
 
@@ -245,11 +245,11 @@
         <div class="row">
           <div class="col-6">
             <label class="show-med-flex results">Other**</label>
-            <label class="hide-med-flex results">2016-17 Other</label>
+            <label class="hide-med-flex results">2016-17 Other**</label>
           </div>
           <div class="col-6">
-            <label class="show-med-flex results">Other</label>
-            <label class="hide-med-flex results">Est. 2017-18 Other</label>
+            <label class="show-med-flex results">Other**</label>
+            <label class="hide-med-flex results">Est. 2017-18 Other**</label>
           </div>
         </div>
 
@@ -307,7 +307,8 @@
           <div class="col-12">
             <div class="col-12">
               <p>*This assumes that any local supplement received last year remains the same.</p>
-              <p>**This assumes principals will still receive it but they should check with HR administrators for more details.</p>
+              <p>**There are various reasons for receiving 'other' pay. This assumes principals will still receive it but they should check with HR administrators for more details.</p>
+           </div>
 
             </div>
 

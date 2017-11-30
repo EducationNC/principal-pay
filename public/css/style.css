@@ -83,9 +83,9 @@ label{
 background-color: #a9bb46;
 padding: 10px;
 }
-.result_total{
+.result_total, .result_total_1617{
   font-size: 30px;
-    font-weight: 700;
+  font-weight: 700;
 }
 
 

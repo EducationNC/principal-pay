@@ -126,7 +126,7 @@ function startMeUp(){
     });
   }
 
-function updateResults(state, current_state, local, other, state_hold_harmless, est_longevity){
+function updateResults(state, current_state, local, other, state_hold_harmless, est_longevity, total_1617){
 
   var total = state+local+other+state_hold_harmless;
 
@@ -136,8 +136,10 @@ function updateResults(state, current_state, local, other, state_hold_harmless, 
   // var state_annual = Math.round(state/12);
 
   // debugger
+  console.log(total_1617)
 
   $('.result_total').html(formatInput(total));
+  $('.result_total_1617').html(formatInput(total_1617))
   $('.result_local').html(formatInput(local));
   $('.result_state').html(formatInput(state));
   $('.result_statehold').html(formatInput(state_hold_harmless));
@@ -175,9 +177,15 @@ function updateResults(state, current_state, local, other, state_hold_harmless, 
 
     current_state_annual = state_annual;
 
+    console.log(state_annual + " " + local_annual + " " + other_annual + " " + est_longevity)
+
+    var total_1617 = state_annual+local_annual+other_annual+est_longevity;
+
+    console.log(total_1617)
+
     //return the total annual compensation
     //return est_state_annual+local_annual+other_annual+state_hold_harmless;
-    updateResults(est_state_annual, current_state_annual, local_annual, other_annual, state_hold_harmless, est_longevity)
+    updateResults(est_state_annual, current_state_annual, local_annual, other_annual, state_hold_harmless, est_longevity, total_1617)
   }
 
   function getTotalSalary(local_mo, state_mo, other_mo){

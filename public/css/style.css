@@ -86,7 +86,7 @@ label{
 background-color: #a9bb46;
 padding: 10px;
 }
-.result_total, .result_total_1617{
+.result_total, .result_total_1617, .result_total_1819{
   font-size: 30px;
   font-weight: 700;
 }
@@ -141,6 +141,7 @@ label.results{
   display:none;
 }
 
+
 @media (max-width: 992px) {
 .show-med-flex{
   display:none;
@@ -148,9 +149,16 @@ label.results{
 .hide-med-flex{
   display:flex;
 }
-label.hide-med-flex.results {
+label.results {
     font-size: 18px;
 }
 
 
+ }
+
+ @media screen and (max-width: 768px) {
+   p.table-num{
+     font-size: 1.2em!important;
+     font-weight: 700;
+   }
  }

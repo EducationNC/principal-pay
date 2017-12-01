@@ -129,6 +129,7 @@ function startMeUp(){
 function updateResults(state, current_state, local, other, state_hold_harmless, est_longevity, total_1617){
 
   var total = state+local+other+state_hold_harmless;
+  var total_1819 = state+local+other;
 
 
   // var local_annual = Math.round(local/12);
@@ -136,10 +137,10 @@ function updateResults(state, current_state, local, other, state_hold_harmless, 
   // var state_annual = Math.round(state/12);
 
   // debugger
-  console.log(total_1617)
 
   $('.result_total').html(formatInput(total));
-  $('.result_total_1617').html(formatInput(total_1617))
+  $('.result_total_1617').html(formatInput(total_1617));
+  $('.result_total_1819').html(formatInput(total_1819));
   $('.result_local').html(formatInput(local));
   $('.result_state').html(formatInput(state));
   $('.result_statehold').html(formatInput(state_hold_harmless));
@@ -151,6 +152,7 @@ function updateResults(state, current_state, local, other, state_hold_harmless, 
 
 
   $('.result_longevity').html(formatInput(est_longevity));
+
 
 }
 

@@ -20,18 +20,8 @@
 <body>
 <div id="example" class="container">
 
-  <!-- <div class="row">
-    <div class="col-12">
-      <p>During the 2017 long session of the General Assembly, lawmakers passed a budget that revamped the principal pay schedule. The new schedule includes $25 million in new funding for salary increases for most of the state’s principals and also changes how principals are paid.
-      <p>Previously, principals were paid by the state based on years of experience, their educational attainment, and the number of teachers supervised.</p>
-      <p>Under the new schedule, principals are paid based on student enrollment and whether the school(s) they have lead for the last three years did not meet, met, or exceeded academic growth.</p>
-      <p>The change caused confusion among administrators, particularly since many administrators receive both local and state funding for their total compensation. <a href="http://best-nc.org/" target="_blank">BEST NC</a>, in partnership with EducationNC, created the principal pay calculator below for principals to calculate their salaries under the new pay schedule. </p>
-      <p style="font-style:italic;">This calculator is for demonstration purposes. Any questions or concerns should be brought to a district HR department.</p>
-    </div>
-  </div> -->
-
 <div class="row">
-  <div class="col-lg-8 col-sm-12 pads-zero">
+  <div class="col-lg-6 col-sm-12 pads-zero">
     <form id="calc_form">
       <h3 class="purple-header">2016-17 monthly paystub:</h3>
       <div class="row" style="margin-bottom: 24px;">
@@ -43,7 +33,6 @@
             <input type="number" id="state_mo" class="income-input form-control output-trigger" value="5113" min="0" max="9999">
           </div>
         </div>
-
 
 
         <div class="row" style="margin-bottom: 24px;">
@@ -185,15 +174,18 @@
 
   </div>
 
-  <div class="sidebar-wrapper col-lg-4 col-md-12 col-sm-12" style="z-index:2;">
+  <div class="sidebar-wrapper col-lg-6 col-md-12 col-sm-12" style="z-index:2;">
     <div class="sidebar-inner-desktop">
       <div class="col-lg-12">
         <div class="row show-med-flex">
-          <div class="col-lg-6 pads-zero">
+          <div class="col-lg-4 pads-zero">
             <h4 class="purple-header" style="border-left:1px solid white;">Annual 2016-17 Income</h4>
           </div>
-          <div class="col-lg-6 pads-zero">
+          <div class="col-lg-4 pads-zero">
             <h4 class="purple-header" style="border-left:1px solid white;">Estimated 2017-18 Income</h4>
+          </div>
+          <div class="col-lg-4 pads-zero">
+            <h4 class="purple-header" style="border-left:1px solid white;">Estimated 2018-19 Income</h4>
           </div>
         </div>
 
@@ -204,80 +196,107 @@
         </div>
 
         <div class="row">
-          <div class="col-6">
+          <div class="col-4">
             <label class="show-med-flex results">State</label>
             <label class="hide-med-flex results">2016-17 State</label>
           </div>
-          <div class="col-6">
+          <div class="col-4">
             <label class="show-med-flex results">State</label>
             <label class="hide-med-flex results">Est. 2017-18 State</label>
+          </div>
+          <div class="col-4">
+            <label class="show-med-flex results">State</label>
+            <label class="hide-med-flex results">Est. 2018-19 State</label>
           </div>
         </div>
 
         <div class="row">
-          <div class="col-6">
+          <div class="col-4">
             <p class="result_state_current table-num al-left">$0</p>
           </div>
-          <div class="col-6">
+          <div class="col-4">
+            <p class="result_state table-num al-left">$0</p>
+          </div>
+          <div class="col-4">
             <p class="result_state table-num al-left">$0</p>
           </div>
         </div>
 
         <div class="row">
-          <div class="col-6">
+          <div class="col-4">
             <label class="show-med-flex results">Local</label>
             <label class="hide-med-flex results">2016-17 Local</label>
           </div>
-          <div class="col-6">
+          <div class="col-4">
             <label class="show-med-flex results">Local*</label>
             <label class="hide-med-flex results">2017-18 Local</label>
+          </div>
+          <div class="col-4">
+            <label class="show-med-flex results">Local*</label>
+            <label class="hide-med-flex results">2018-19 Local</label>
           </div>
         </div>
 
         <div class="row">
-          <div class="col-6">
+          <div class="col-4">
             <p class="result_local_current table-num al-left">$0</p>
           </div>
-          <div class="col-6">
+          <div class="col-4">
+            <p class="result_local table-num al-left">$0</p>
+          </div>
+          <div class="col-4">
             <p class="result_local table-num al-left">$0</p>
           </div>
         </div>
 
         <div class="row">
-          <div class="col-6">
+          <div class="col-4">
             <label class="show-med-flex results">Other**</label>
             <label class="hide-med-flex results">2016-17 Other**</label>
           </div>
-          <div class="col-6">
+          <div class="col-4">
             <label class="show-med-flex results">Other**</label>
             <label class="hide-med-flex results">Est. 2017-18 Other**</label>
+          </div>
+          <div class="col-4">
+            <label class="show-med-flex results">Other**</label>
+            <label class="hide-med-flex results">Est. 2018-19 Other**</label>
           </div>
         </div>
 
         <div class="row">
-          <div class="col-6">
+          <div class="col-4">
             <p class="result_other_current table-num al-left">$0</p>
           </div>
-          <div class="col-6">
+          <div class="col-4">
+            <p class="result_other table-num al-left">$0</p>
+          </div>
+          <div class="col-4">
             <p class="result_other table-num al-left">$0</p>
           </div>
         </div>
 
         <div class="row">
-          <div class="col-6">
+          <div class="col-4">
             <label class="results">Est. Longevity</label>
           </div>
-          <div class="col-6">
-            <label class="results">State Hold Harmless</label>
+          <div class="col-4">
+            <label class="results">State Hold Harmless***</label>
+          </div>
+          <div class="col-4">
+            <label class="results"></label>
           </div>
         </div>
 
         <div class="row">
-          <div class="col-6">
+          <div class="col-4">
               <p class="result_longevity table-num al-left">$0</p>
           </div>
-          <div class="col-6">
+          <div class="col-4">
               <p class="result_statehold table-num al-left">$0</p>
+          </div>
+          <div class="col-4">
+              <!-- <p class="result_statehold table-num al-left">$0</p> -->
           </div>
 
         </div>
@@ -285,10 +304,13 @@
         <hr>
 
         <div class="row total">
-          <div class="col-6">
+          <div class="col-4">
             <label>Total</label>
           </div>
-          <div class="col-6">
+          <div class="col-4">
+            <label>Total</label>
+          </div>
+          <div class="col-4">
             <label>Total</label>
           </div>
 
@@ -296,11 +318,14 @@
 
         <div class="row total">
 
-          <div class="col-6">
+          <div class="col-4">
             <p class="result_total_1617 table-num al-left">$0</p>
           </div>
-          <div class="col-6">
+          <div class="col-4">
             <p class="result_total table-num al-left">$0</p>
+          </div>
+          <div class="col-4">
+            <p class="result_total_1819 table-num al-left">$0</p>
           </div>
         </div>
 
@@ -309,6 +334,7 @@
             <div class="col-12">
               <p>*This assumes that any local supplement received last year remains the same.</p>
               <p>**There are various reasons for receiving 'other' pay. This assumes principals will still receive it but they should check with HR administrators for more details.</p>
+              <p>***State Hold Harmless is a provision preventing a principal from having their salary decreased — 350 principals are being held harmless this year. The 2018-19 calculation assumes state hold harmless wouldn't be extended.</p>
            </div>
 
             </div>
